@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>HTML - Tables</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+            body {
+                font-family: 'Roboto', sans-serif;
+                background-color: #fafafa;
+                color: #333;
+                margin: 0;
+                padding: 20px;
+                line-height: 1.6;
+            }
+
+            h1 {
+                text-align: center;
+                color: #333;
+                margin-bottom: 30px;
+                font-size: 2.5em;
+            }
+
+            aside {
+                margin-bottom: 30px;
+                background-color: #007BFF;
+                padding: 15px;
+                border-radius: 8px;
+                color: #fff;
+            }
+
+            aside h2 {
+                font-size: 1.8em;
+                margin-bottom: 15px;
+            }
+
+            aside ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            aside ul li {
+                margin-bottom: 10px;
+            }
+
+            aside ul li a {
+                text-decoration: none;
+                color: #fff;
+                font-weight: 700;
+                transition: color 0.3s ease;
+            }
+
+            aside ul li a:hover {
+                color: #ffdd57;
+            }
+
+            article {
+                background-color: #fff;
+                padding: 25px;
+                margin-bottom: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            }
+
+            article h2 {
+                margin-top: 0;
+                color: #007BFF;
+                font-size: 1.8em;
+            }
+
+            article p {
+                font-size: 16px;
+                color: #555;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 20px;
+                font-size: 1em;
+            }
+
+            table caption {
+                caption-side: top;
+                font-weight: bold;
+                margin-bottom: 10px;
+                font-size: 1.2em;
+                color: #007BFF;
+            }
+
+            th, td {
+                padding: 15px;
+                text-align: center;
+            }
+
+            th {
+                background-color: #007BFF;
+                color: white;
+                border-top-left-radius: 8px;
+                border-top-right-radius: 8px;
+                font-size: 1.1em;
+            }
+
+            tbody tr:nth-child(even) {
+                background-color: #f7f7f7;
+            }
+
+            tbody tr:hover {
+                background-color: #e9ecef;
+                cursor: pointer;
+            }
+
+            tfoot {
+                font-weight: bold;
+                background-color: #f1f1f1;
+            }
+
+            tfoot td {
+                padding: 15px;
+                border-top: 2px solid #dee2e6;
+                background-color: #f8f9fa;
+            }
+
+            .classic > table {
+                border: 2px outset darkgray;
+            }
+
+            .classic th, .classic td {
+                border: 1px inset gray;
+            }
+
+            .single > table, .single th, .single td {
+                border: 1px solid #ddd;
+            }
+
+            .simple > table, .simple th, .simple td {
+                border: 1px solid #ddd;
+                border-collapse: collapse;
+            }
+
+            /* Botão de voltar ao topo */
+            .back-to-top {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background-color: #007BFF;
+                color: #fff;
+                padding: 10px 20px;
+                border-radius: 50px;
+                font-weight: bold;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                text-decoration: none;
+                transition: background-color 0.3s ease;
+            }
+
+            .back-to-top:hover {
+                background-color: #0056b3;
+            }
+
+            /* Estilização da tabela de cardápio */
+            .menu-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 20px;
+                font-size: 1em;
+            }
+
+            .menu-table caption {
+                caption-side: top;
+                font-weight: bold;
+                margin-bottom: 10px;
+                font-size: 1.2em;
+                color: #007BFF;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .menu-table caption img {
+                margin-right: 10px;
+                width: 50px;
+                height: 50px;
+            }
+
+            .menu-table th, .menu-table td {
+                padding: 15px;
+                text-align: left;
+            }
+
+            .menu-table th {
+                background-color: #007BFF;
+                color: white;
+                font-size: 1.1em;
+            }
+
+            .menu-table tbody tr:nth-child(even) {
+                background-color: #f7f7f7;
+            }
+
+            .menu-table tbody tr:hover {
+                background-color: #e9ecef;
+                cursor: pointer;
+            }
+
+            .menu-table td img {
+                width: 100px;
+                height: 100px;
+                object-fit: cover;
+                border-radius: 8px;
+            }
+
+            .menu-table .price {
+                font-weight: bold;
+                color: #007BFF;
+                font-size: 1.2em;
+            }
+
+            .menu-table tfoot {
+                font-weight: bold;
+                background-color: #f1f1f1;
+                text-align: right;
+            }
+
+            .menu-table tfoot td {
+                padding: 10px;
+                border-top: 2px solid #dee2e6;
+            }
+
+            .menu-table .total {
+                font-size: 1.5em;
+                color: #FF4500;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Praticando tabelas em HTML</h1>
+        <aside>
+            <h2>&Iacute;ndice</h2>
+            <ul>
+                <li><a href="#exercicio1">Exercício 1</a></li>
+                <li><a href="#exercicio2">Exercício 2</a></li>
+                <li><a href="#exercicio3">Exercício 3</a></li>
+                <li><a href="#exercicio4">Exercício 4</a></li>
+            </ul>
+        </aside>
+
+        <!-- Exercício 1 -->
+        <article id="exercicio1" class="classic">
+            <h2>Exercício 1</h2>
+            <p>Fazer uma tabela 3x3 de nomes de frutas. Colocar legenda Superior.</p>
+            <table>
+                <caption>Tabela 1: Frutas</caption>
+                <tr>
+                    <td>Maçã</td>
+                    <td>Banana</td>
+                    <td>Pera</td>
+                </tr>
+                <tr>
+                    <td>Abacaxi</td>
+                    <td>Pêssego</td>
+                    <td>Goiaba</td>
+                </tr>
+                <tr>
+                    <td>Laranja</td>
+                    <td>Morango</td>
+                    <td>Uva</td>
+                </tr>
+            </table>
+        </article>
+
+        <!-- Exercício 2 -->
+        <article id="exercicio2" class="single">
+            <h2>Exercício 2</h2>
+            <p>Fazer uma tabela com 3 colunas e 5 linhas (no mínimo). Colocar legenda inferior</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Turma</th>
+                        <th>Nome</th>
+                        <th>RA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TIN1</td>
+                        <td>Gustavo Champam</td>
+                        <td>223645</td>
+                    </tr>
+                    <tr>
+                        <td>TIN2</td>
+                        <td>Nome Inventado 1</td>
+                        <td>789012</td>
+                    </tr>
+                    <tr>
+                        <td>TIN1</td>
+                        <td>Nome Inventado 2</td>
+                        <td>345678</td>
+                    </tr>
+                    <tr>
+                        <td>TIN2</td>
+                        <td>Nome Inventado 3</td>
+                        <td>901234</td>
+                    </tr>
+                    <tr>
+                        <td>TIN1</td>
+                        <td>Nome Inventado 4</td>
+                        <td>567890</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">Lista de alunos</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </article>
+
+        <!-- Exercício 3 -->
+        <article id="exercicio3" class="simple">
+            <h2>Exercício 3</h2>
+            <p>Crie uma tabela de dias da semana e atividades. Não precisa de legenda.</p>
+            <table>
+                <tr>
+                    <th>Atividades</th>
+                    <th>Dom</th>
+                    <th>Seg</th>
+                    <th>Ter</th>
+                    <th>Qua</th>
+                    <th>Qui</th>
+                    <th>Sex</th>
+                    <th>Sáb</th>
+                </tr>
+                <tr>
+                    <td>Natação</td>
+                    <td></td>
+                    <td>X</td>
+                    <td></td>
+                    <td>X</td>
+                    <td></td>
+                    <td></td>
+                    <td>X</td>
+                </tr>
+                <tr>
+                    <td>Futebol</td>
+                    <td></td>
+                    <td></td>
+                    <td>X</td>
+                    <td></td>
+                    <td>X</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Tênis</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>X</td>
+                    <td></td>
+                    <td>X</td>
+                    <td></td>
+                </tr>
+            </table>
+        </article>
+
+        <!-- Exercício 4 -->
+        <article id="exercicio4" class="simple">
+            <h2>Exercício 4</h2>
+            <p>Crie uma tabela de cardápio de lanchonete. A legenda deve ser o nome ou imagem com nome.</p>
+            <table class="menu-table">
+                <caption>
+                    <img src="caminho-da-imagem-da-lanchonete.jpg" alt="Logo da Lanchonete">
+                    Cardápio de Lanches
+                </caption>
+                <thead>
+                    <tr>
+                        <th>Foto</th>
+                        <th>Nome</th>
+                        <th>Ingredientes/Itens do Combo</th>
+                        <th>Preço</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="caminho-do-hamburguer.jpg" alt="Hambúrguer"></td>
+                        <td>X-Tudo</td>
+                        <td>Pão, carne, queijo, bacon, alface, tomate, ovo, maionese</td>
+                        <td class="price">R$ 35,00</td>
+                    </tr>
+                    <tr>
+                        <td><img src="caminho-do-xsalada.jpg" alt="X-Salada"></td>
+                        <td>X-Salada</td>
+                        <td>Pão, carne, queijo, alface, tomate, maionese</td>
+                        <td class="price">R$ 25,00</td>
+                    </tr>
+                    <tr>
+                        <td><img src="caminho-do-combo.jpg" alt="Combo Econômico"></td>
+                        <td>Combo Econômico</td>
+                        <td>X-Burguer, batata frita, suco</td>
+                        <td class="price">R$ 20,00</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">Total (R$)</td>
+                        <td class="total">R$ 80,00</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">Data do Cardápio: 04/09/2024 | Moeda: BRL</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </article>
+
+        <a href="#top" class="back-to-top">Topo</a>
+    </body>
+</html>
